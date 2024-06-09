@@ -1,0 +1,46 @@
+<style>
+  nav {
+    display: flex;
+    margin: 0 auto;
+    width: 30vw;
+    justify-content: space-evenly;
+  }
+  .navbtn {
+    background-color: cornflowerblue;
+    padding: 2vh 2vw;
+    border-radius: 1rem;
+    border-color: transparent;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fefefe;
+  }
+  .navbtn:hover {
+    background-color: rgb(125, 168, 248);
+    box-shadow: 2px 2px 4px rgba(1, 33, 93, 0.501);
+    transition: 0.25s ease-in;
+  }
+  h1,
+  h6 {
+    text-align: center;
+  }
+  h6 {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  span {
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px #00000071;
+  }
+</style>
+<!-- <app-input-component></app-input-component> -->
+<h1>App Portal</h1>
+<h6>Click these buttons to get portaled to those apps <span>😉</span></h6>
+<nav>
+  @for(routePath of routePaths;track routePath){
+  <button class="navbtn" (click)="navigate(routePath.path)">
+    {{ routePath.label }}
+  </button>
+  }
+</nav>

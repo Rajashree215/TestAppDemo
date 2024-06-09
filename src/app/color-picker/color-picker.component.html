@@ -1,0 +1,40 @@
+<h1 style="text-align: center; color: rgb(56, 56, 56); margin-bottom: 1dvh">
+  Color Palette
+</h1>
+<h6 style="font-weight: normal; margin: 0; color: rgb(56, 56, 56)">
+  Pick a color to display in the canvas
+</h6>
+<div class="palette">
+  <!-- <div *ngFor="let color of colors" [ngClass]="[color,'style']" (click)="pickColor($event)"></div> -->
+  <!-- each color is looped and sent to the child component -->
+
+  <!-- old ngFor -->
+  <!-- <app-pallette
+    *ngFor="let color of colors"
+    [color]="color"
+    (pickColorEvent)="pickColor($event)"
+  ></app-pallette> -->
+
+  <!-- new @for -->
+  @for(color of colors;track color){
+  <app-pallette
+    [color]="color"
+    (pickColorEvent)="pickColor($event)"
+  ></app-pallette>
+  }
+</div>
+<br /><br /><br />
+
+<!-- old method -->
+<!-- <div *ngIf="pickedColor.trim()!==''" [ngClass]="[pickedColor,'canvas']"></div>
+<h6 *ngIf="pickedColor.trim()!==''">{{pickedColor}}</h6> -->
+
+<!-- new if method -->
+@if(pickedColor.trim()!=='') {
+<div [ngClass]="[pickedColor, 'canvas']"></div>
+<h6>{{ pickedColor }}</h6>
+} @else{
+<!-- <h6 style="font-weight: 500; margin: 0; color: rgb(56, 56, 56)">
+  Please select a color to display it in the canvas.
+</h6> -->
+}
